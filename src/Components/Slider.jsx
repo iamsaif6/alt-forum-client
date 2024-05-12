@@ -18,50 +18,98 @@ import { Fade } from 'react-awesome-reveal';
 export default function Slider() {
   const progressCircle = useRef(null);
   const progressContent = useRef(null);
-  //   const onAutoplayTimeLeft = (s, time, progress) => {
-  //     progressCircle.current.style.setProperty('--progress', 1 - progress);
-  //     progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
-  //   };
+  const onAutoplayTimeLeft = (s, time, progress) => {
+    progressCircle.current.style.setProperty('--progress', 1 - progress);
+    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`;
+  };
   return (
     <>
       <div className="">
         <Swiper
           spaceBetween={30}
           centeredSlides={true}
-          // autoplay={{
-          //   delay: 2500,
-          //   disableOnInteraction: false,
-          // }}
+          style={{
+            '--swiper-navigation-size': '45px',
+          }}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
           pagination={{
             clickable: true,
           }}
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
-          // onAutoplayTimeLeft={onAutoplayTimeLeft}
+          onAutoplayTimeLeft={onAutoplayTimeLeft}
           className="mySwiper"
         >
           <SwiperSlide>
             <div>
-              <div className="grid w-4/5 mx-auto grid-cols-2 gap-8 items-center">
-                <div className="text-left">
-                  <h1 className="text-[65px] leading-[80px] font-extrabold">Discover Better Options</h1>
-                  <p>Explore alternative products recommended by our community for a sustainable and mindful lifestyle.</p>
-                  <button className=" bg-yellow text-dark py-3 font-semibold mt-5 px-11 rounded-md">Learn More</button>
+              <div className="w-4/5 mx-auto flex items-center lg:flex-row flex-col-reverse justify-between gap-2 lg:gap-8 my-7 ">
+                <div className="text-center lg:text-left">
+                  <h1 className="lg:text-[65px] text-[35px] lg:leading-[80px] font-extrabold">Discover Better Options</h1>
+
+                  <p className="mt-2">Explore alternative products recommended by our community for a sustainable and mindful lifestyle.</p>
+                  <button className=" hover:bg-[#222] hover:text-white mb-3 lg:mb-0 transition-all bg-yellow text-dark py-3 font-semibold mt-5 px-11 rounded-md">
+                    Learn More
+                  </button>
                 </div>
-                <div className="flex items-center justify-end">
-                  <img className="max-w-[600px]" src={banner1} alt="" />
-                </div>
+
+                <Fade>
+                  <div className="flex items-center justify-end">
+                    <img className="max-w-[230px] lg:max-w-[600px]" src={banner2} alt="" />
+                  </div>
+                </Fade>
               </div>
             </div>
           </SwiperSlide>
-          <SwiperSlide>Slide 2</SwiperSlide>
-          <SwiperSlide>Slide 3</SwiperSlide>
-          <SwiperSlide>Slide 4</SwiperSlide>
+          <SwiperSlide>
+            <div>
+              <div className="w-4/5 mx-auto flex items-center lg:flex-row flex-col-reverse justify-between gap-2 lg:gap-8 my-7 ">
+                <div className="text-center lg:text-left">
+                  <h1 className="lg:text-[65px] text-[35px] lg:leading-[80px] font-extrabold">Upgrade Your Choices</h1>
+
+                  <p className="mt-2">Find better alternatives to your favorite products, tailored to your needs and preferences .</p>
+                  <button className=" hover:bg-[#222] hover:text-white mb-3 lg:mb-0 transition-all bg-yellow text-dark py-3 font-semibold mt-5 px-11 rounded-md">
+                    Learn More
+                  </button>
+                </div>
+
+                <Fade>
+                  <div className="flex items-center justify-end">
+                    <img className="max-w-[230px] lg:max-w-[600px]" src={banner1} alt="" />
+                  </div>
+                </Fade>
+              </div>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide>
+            <div>
+              <div className="w-4/5 mx-auto flex items-center lg:flex-row flex-col-reverse justify-between gap-2 lg:gap-8 my-7 ">
+                <div className="text-center lg:text-left">
+                  <h1 className="lg:text-[65px] text-[35px] lg:leading-[80px] font-extrabold">Innovation Beyond Boundaries</h1>
+
+                  <p className="mt-2">
+                    Join the conversation on Alt-Forum and unlock a world of innovative alternatives for a brighter tomorrow.
+                  </p>
+                  <button className=" hover:bg-[#222] hover:text-white mb-3 lg:mb-0 transition-all bg-yellow text-dark py-3 font-semibold mt-5 px-11 rounded-md">
+                    Learn More
+                  </button>
+                </div>
+
+                <Fade>
+                  <div className="flex items-center justify-end">
+                    <img className="max-w-[230px] lg:max-w-[600px]" src={banner3} alt="" />
+                  </div>
+                </Fade>
+              </div>
+            </div>
+          </SwiperSlide>
           <div className="autoplay-progress" slot="container-end">
             <svg viewBox="0 0 48 48" ref={progressCircle}>
-              <circle cx="24" cy="24" r="20"></circle>
+              <circle className="  stroke-[#EECE70]" cx="24" cy="24" r="20"></circle>
             </svg>
-            <span ref={progressContent}></span>
+            <span className="text-[#EECE70]" ref={progressContent}></span>
           </div>
         </Swiper>
       </div>

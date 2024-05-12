@@ -5,7 +5,6 @@
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  background: #fff;
 
   /* Center slide text vertically */
   display: flex;
@@ -48,4 +47,13 @@
   stroke-dashoffset: calc(125.6px * (1 - var(--progress)));
   stroke-dasharray: 125.6;
   transform: rotate(-90deg);
+}
+
+.swiper-pagination-bullet-active {
+  background: #f5ce5e;
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  color: #f5ce5e;
 }
