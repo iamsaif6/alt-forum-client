@@ -56,22 +56,25 @@ const Update = () => {
       {post && (
         <div className="grid grid-cols-5 py-[80px] items-center gap-10">
           <div className="col-span-2 align-baseline">
-            <div className="border rounded-lg py-6 px-6" key={post._id}>
-              <img className="object-cover rounded-lg w-full h-[200px]" src={post.productIMG} alt="" />
-              <h3 className="mt-6 mb-3 text-[20px] font-semibold">{post.postTitle}</h3>
-              <div className="space-y-2">
-                <p>
-                  Name : <span className="font-semibold">{post.productName}</span>
-                </p>
-                <p>
-                  Brand : <span className="font-semibold">{post.productBrand}</span>
-                </p>
-                <p>
-                  Total Recommened : <span className="font-semibold">{post.recommendationCount}</span>
-                </p>
-                <p>
-                  Post Date : <span className=" font-mono">{post.post_date}</span> | <span className=" font-mono">{post.post_time}</span>
-                </p>
+            <div>
+              <h3 className="text-[24px] font-bold mb-7  text-center">Query Preview</h3>
+              <div className="border rounded-lg py-6 px-6" key={post._id}>
+                <img className="object-cover rounded-lg w-full h-[200px]" src={post.productIMG} alt="" />
+                <h3 className="mt-6 mb-3 text-[20px] font-semibold">{post.postTitle}</h3>
+                <div className="space-y-2">
+                  <p>
+                    Name : <span className="font-semibold">{post.productName}</span>
+                  </p>
+                  <p>
+                    Brand : <span className="font-semibold">{post.productBrand}</span>
+                  </p>
+                  <p>
+                    Total Recommened : <span className="font-semibold">{post.recommendationCount}</span>
+                  </p>
+                  <p>
+                    Post Date : <span className=" font-mono">{post.post_date}</span> | <span className=" font-mono">{post.post_time}</span>
+                  </p>
+                </div>
               </div>
             </div>
           </div>

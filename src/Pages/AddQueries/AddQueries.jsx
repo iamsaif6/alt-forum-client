@@ -104,7 +104,8 @@ const AddQueries = () => {
             </label>
             <label className="text-[14px] font-semibold opacity-60 block" htmlFor="reason">
               Boycotting Reason
-              <input
+              <textarea
+                rows={5}
                 required
                 name="reason"
                 id="reason"
