@@ -1,9 +1,19 @@
 import { Link, NavLink } from 'react-router-dom';
 import '../../Components/Shared/Navbar.css';
 import logo2 from '../../assets/logo2.png';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../../Routes/AuthProvider';
+import toast from 'react-hot-toast';
+import 'react-tooltip/dist/react-tooltip.css';
+import { Tooltip } from 'react-tooltip';
+
+const notify = text => toast.success(text);
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  console.log(user);
+
+  // set theme on local storage
   const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
   console.log(theme);
   const handleThemeBtn = e => {
@@ -20,6 +30,15 @@ const Navbar = () => {
   }, [theme]);
   console.log(theme);
 
+  //Logout
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        notify('Logout Successfull');
+      })
+      .catch(error => console.log(error.message));
+  };
+
   const navLinks = (
     <>
       <li>
@@ -35,16 +54,26 @@ const Navbar = () => {
         <NavLink to="/myqueries">My Queries</NavLink>
       </li>
       <li>
-        <NavLink to="/myrecommendations">My Recommendations</NavLink>
+        <NavLink to="/addqueries">add Queries</NavLink>
       </li>
       <li>
-        <NavLink to="/login">Login</NavLink>
+        <NavLink to="/myrecommendations">My Recommendations</NavLink>
       </li>
+      {user ? (
+        <li>
+          <button onClick={handleLogout}>Logout</button>
+        </li>
+      ) : (
+        <li>
+          <NavLink to="/login">Login</NavLink>
+        </li>
+      )}
     </>
   );
 
   return (
     <div>
+      <Tooltip className="relative z-40" id="my-tooltip" />
       <div className="max-w-7xl relative z-10  mx-auto px-4 py-2 border-b">
         <div className="navbar">
           <div className="navbar-start w-full md:w-1/2">
@@ -82,11 +111,16 @@ const Navbar = () => {
                 <path d="M21.64,13a1,1,0,0,0-1.05-.14,8.05,8.05,0,0,1-3.37.73A8.15,8.15,0,0,1,9.08,5.49a8.59,8.59,0,0,1,.25-2A1,1,0,0,0,8,2.36,10.14,10.14,0,1,0,22,14.05,1,1,0,0,0,21.64,13Zm-9.5,6.69A8.14,8.14,0,0,1,7.08,5.22v.27A10.15,10.15,0,0,0,17.22,15.63a9.79,9.79,0,0,0,2.1-.22A8.11,8.11,0,0,1,12.14,19.73Z" />
               </svg>
             </label>
-            <div className="avatar online">
-              <div className="w-[40px] rounded-full">
-                <img className="w-full" src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+            {user && (
+              <div
+                data-tooltip-id="my-tooltip"
+                data-tooltip-content={user?.displayName}
+                data-tooltip-place="bottom"
+                className="online avatar"
+              >
+                <div className="w-[40px] rounded-full">{user && <img className="w-full" src={user?.photoURL} />}</div>
               </div>
-            </div>
+            )}
           </div>
         </div>
       </div>

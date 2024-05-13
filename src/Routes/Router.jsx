@@ -7,6 +7,8 @@ import MyRecommendations from '../Pages/MyRecommendations/MyRecommendations';
 import RecommendationsForME from '../Pages/RecommendationsForME/RecommendationsForME';
 import Login from '../Pages/Login/Login';
 import Register from '../Pages/Register/Register';
+import PrivateRoute from './PrivateRoute';
+import AddQueries from '../Pages/AddQueries/AddQueries';
 
 const router = createBrowserRouter([
   {
@@ -23,15 +25,27 @@ const router = createBrowserRouter([
       },
       {
         path: '/myqueries',
-        element: <MyQueries></MyQueries>,
+        element: (
+          <PrivateRoute>
+            <MyQueries></MyQueries>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/myrecommendations',
-        element: <MyRecommendations></MyRecommendations>,
+        element: (
+          <PrivateRoute>
+            <MyRecommendations></MyRecommendations>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/recommendations',
-        element: <RecommendationsForME></RecommendationsForME>,
+        element: (
+          <PrivateRoute>
+            <RecommendationsForME></RecommendationsForME>
+          </PrivateRoute>
+        ),
       },
       {
         path: '/login',
@@ -40,6 +54,14 @@ const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>,
+      },
+      {
+        path: '/addqueries',
+        element: (
+          <PrivateRoute>
+            <AddQueries></AddQueries>
+          </PrivateRoute>
+        ),
       },
     ],
   },

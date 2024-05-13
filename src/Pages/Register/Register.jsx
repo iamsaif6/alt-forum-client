@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import loginIMG from '../../assets/login.png';
 import { FaEnvelope, FaEye, FaUser, FaEyeSlash } from 'react-icons/fa';
 import { MdInsertPhoto } from 'react-icons/md';
@@ -7,12 +7,15 @@ import toast from 'react-hot-toast';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Routes/AuthProvider';
 AOS.init();
 
-const notify = () => toast.success('Here is your toast.');
+const notify = text => toast.success(text);
+const notify2 = text => toast.error(text);
 
 const Register = () => {
   const [showPass, setShowPass] = useState(true);
+  const { register, updateUserProfile, logout } = useContext(AuthContext);
 
   //   Register
   const handelRegister = e => {
@@ -20,7 +23,39 @@ const Register = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const name = form.name.value;
+    const photourl = form.photo.value;
     console.log(email, password);
+
+    //Password validation
+    if (password.length < 6) {
+      notify2('Password Should 6 Character At Least');
+    } else if (password.search(/[a-z]/) < 0) {
+      notify2('Password Should Contain One Lowercase');
+    } else if (password.search(/[A-Z]/) < 0) {
+      notify2('Password Should Contain One Uppercase');
+    } else {
+      register(email, password)
+        .then(() => {
+          // Update Profile after Register
+          updateUserProfile(name, photourl)
+            .then(() => {
+              console.log('Profile Updates');
+              e.target.reset();
+              notify('Registration Succesfull');
+              //Logout User After Registration
+              logout()
+                .then()
+                .catch(error => {
+                  console.log(error.message);
+                });
+            })
+            .catch(error => console.log(error.message));
+        })
+        .catch(err => {
+          notify2(err.message);
+        });
+    }
   };
 
   return (
@@ -83,7 +118,6 @@ const Register = () => {
 
           <div>
             <button
-              onClick={notify}
               type="submit"
               className=" hover:bg-[#222] hover:text-white mb-3 lg:mb-0 transition-all bg-yellow text-dark py-3 font-semibold w-full px-11 rounded-md"
             >

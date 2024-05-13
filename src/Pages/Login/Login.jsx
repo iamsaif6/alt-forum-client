@@ -1,23 +1,51 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import loginIMG from '../../assets/login.png';
 import { FaEnvelope, FaEye, FaGoogle, FaFacebookF, FaGithub, FaEyeSlash } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import AOS from 'aos';
+import toast from 'react-hot-toast';
 import 'aos/dist/aos.css';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../Routes/AuthProvider';
 
 AOS.init();
+const notify = text => toast.success(text);
+const notify2 = text => toast.error(text);
 
 const Login = () => {
   const [showPass, setShowPass] = useState(true);
+  const { loginWithMail, loginWithGoogle } = useContext(AuthContext);
 
-  //   Login
+  //   Login with main
   const handleLogin = e => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
+    //Sign in With Email
+    loginWithMail(email, password)
+      .then(() => {
+        e.target.reset();
+        notify('Login Successfull');
+      })
+      .catch(error => {
+        notify2(error.message);
+      });
+  };
+
+  //Login with Google
+
+  const handleGoogleSign = () => {
+    loginWithGoogle()
+      .then(() => {
+        notify('Login Successfull via Google');
+      })
+      .catch(error => {
+        notify2(error.message);
+        console.log(error);
+      });
   };
 
   return (
@@ -36,7 +64,6 @@ const Login = () => {
               type="email"
               placeholder="Email"
             />
-
             <FaEnvelope className="absolute text-yellow top-1/2 left-5 -translate-y-1/2" />
           </div>
           <div className="relative">
@@ -83,7 +110,10 @@ const Login = () => {
           </span>
         </div>
         <div className="text-yellow text-[20px] space-x-4">
-          <button className="border-yellow hover:bg-[#333] hover:border-[#333] hover:text-white p-2 border-[2px] rounded-lg">
+          <button
+            onClick={handleGoogleSign}
+            className="border-yellow hover:bg-[#333] hover:border-[#333] hover:text-white p-2 border-[2px] rounded-lg"
+          >
             <FaGoogle />
           </button>
           <button className="border-yellow hover:bg-[#333] hover:border-[#333] hover:text-white p-2 border-[2px] rounded-lg">
