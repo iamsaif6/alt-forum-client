@@ -8,7 +8,7 @@ const MyQueries = () => {
   const [queries, setQueries] = useState(null);
 
   useEffect(() => {
-    axios.get(`http://localhost:500/myqueries?email=${user.email}`).then(res => {
+    axios.get(`${import.meta.env.VITE_API_URL}/myqueries?email=${user.email}`).then(res => {
       console.log(res.data);
       setQueries(res.data);
     });
@@ -52,7 +52,9 @@ const MyQueries = () => {
                   </p>
                 </div>
                 <div className="flex items-center mt-6 gap-3 justify-between">
-                  <button className="bg-yellow w-full font-semibold py-2 px-2 rounded-md">Update</button>
+                  <Link className="w-full bg-yellow  text-center font-semibold py-2 px-2 rounded-md" to={`/update/${query._id}`}>
+                    <button>Update</button>
+                  </Link>
                   <button className="bg-yellow w-full font-semibold py-2 px-2 rounded-md">Delete</button>
                 </div>
                 <Link to={`/myqueries/${query._id}`}>

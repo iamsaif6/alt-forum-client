@@ -10,6 +10,7 @@ import Register from '../Pages/Register/Register';
 import PrivateRoute from './PrivateRoute';
 import AddQueries from '../Pages/AddQueries/AddQueries';
 import ViewDetails from '../Pages/ViewDetails/ViewDetails';
+import Update from '../Pages/Update/Update';
 
 const router = createBrowserRouter([
   {
@@ -69,6 +70,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoute>
             <ViewDetails></ViewDetails>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: '/update/:id',
+        element: (
+          <PrivateRoute>
+            <Update></Update>
           </PrivateRoute>
         ),
       },
