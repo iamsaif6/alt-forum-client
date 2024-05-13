@@ -54,9 +54,6 @@ const Navbar = () => {
         <NavLink to="/myqueries">My Queries</NavLink>
       </li>
       <li>
-        <NavLink to="/addqueries">add Queries</NavLink>
-      </li>
-      <li>
         <NavLink to="/myrecommendations">My Recommendations</NavLink>
       </li>
       {user ? (

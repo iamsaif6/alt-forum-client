@@ -17,12 +17,9 @@ const AddQueries = () => {
     const queryTitle = form.query_title.value;
     const reason = form.reason.value;
 
-    //Get date
-    const date = new Date();
-    const day = date.getDate();
-    const month = date.getMonth();
-    const year = date.getFullYear();
-    const currnetDate = `${day}-${month}-${year}`;
+    //Get date and Time
+    const currnetDate = new Date().toLocaleDateString();
+    const currentTime = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', hour12: true });
 
     const queryDetails = {
       productName,
@@ -35,9 +32,11 @@ const AddQueries = () => {
       user_photo: user.photoURL,
       recommendationCount: 0,
       post_date: currnetDate,
+      post_time: currentTime,
     };
     console.log(queryDetails);
 
+    // Post Query
     axios.post(`${import.meta.env.VITE_API_URL}/addqueries`, queryDetails).then(res => {
       if (res.data.acknowledged) {
         Swal.fire({
