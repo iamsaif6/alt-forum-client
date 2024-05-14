@@ -125,7 +125,10 @@ const ViewDetails = () => {
             <div>
               {recommendations &&
                 recommendations.map(recommend => (
-                  <div className="flex items-center mb-6 gap-6 border rounded-xl py-6 px-7 justify-between" key={recommend.query_id}>
+                  <div
+                    className="flex items-center mb-6 gap-6 bg-[#eeeeee81] rounded-xl py-6 px-7 justify-between"
+                    key={recommend.query_id}
+                  >
                     <div className="w-3/4">
                       <div className="flex items-center gap-6">
                         <img
