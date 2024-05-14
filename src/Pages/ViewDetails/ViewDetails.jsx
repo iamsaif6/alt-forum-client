@@ -7,15 +7,29 @@ import Swal from 'sweetalert2';
 const ViewDetails = () => {
   const { user } = useContext(AuthContext);
   const [details, setDetails] = useState(null);
+  const [recommendations, setRecommendations] = useState([]);
   const param = useParams();
   const id = param.id;
 
+  //Load Query Recommendation
+  useEffect(() => {
+    axios.get(`${import.meta.env.VITE_API_URL}/recommendation/${id}`).then(res => {
+      setRecommendations(res.data);
+    });
+  }, [id]);
+
+  //Load Quary Details By id
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_API_URL}/myqueries/${id}`).then(res => {
       setDetails(res.data);
-      console.log(res.data);
     });
   }, [id]);
+
+  const [reCount, setRecount] = useState(0);
+  useEffect(() => {
+    let count = details?.recommendationCount;
+    setRecount(count);
+  }, [details]);
 
   const handleRecommend = e => {
     e.preventDefault();
@@ -32,11 +46,13 @@ const ViewDetails = () => {
       recommendation_img,
       recommendation_reason,
       query_id: details._id,
+      query_title: details.queryTitle,
       productName: details.productName,
       user_email: details.user_email,
       user_name: details.user_name,
       recommender_email: user.email,
       recommender_name: user.displayName,
+      recommender_photo: user.photoURL,
       currnetDate: new Date().toLocaleDateString(),
     };
 
@@ -44,18 +60,20 @@ const ViewDetails = () => {
       if (res.data.acknowledged) {
         //Update Recommend Cout Pot the Post
         axios.patch(`${import.meta.env.VITE_API_URL}/updaterecommend/${details._id}`).then(res => {
-          console.log(res.data);
+          if (res.data.modifiedCount > 0) {
+            setRecount(reCount + 1);
+            const updatedRecommendatoin = [...recommendations, recommendDetails];
+            setRecommendations(updatedRecommendatoin);
+          }
         });
         Swal.fire({
           title: 'Great!',
           text: 'Recommendation Added!',
           icon: 'success',
         });
-        form.reset();
+        // form.reset();
       }
     });
-
-    console.log(recommendDetails);
   };
 
   return (
@@ -91,14 +109,51 @@ const ViewDetails = () => {
                 <p className="font-semibold">
                   Product Name : <span>{details.productName}</span>
                 </p>
-                <p>
-                  Total Recommendation : <span className="font-bold">{details.recommendationCount}</span>
+                <p className="text-[18px]">
+                  Total Recommendation : <span className="font-bold">{reCount}</span>
                 </p>
               </div>
               <p className="font-semibold">
                 Product Brand : <span>{details.productBrand}</span>
               </p>
             </div>
+            {/*Load all recommendation for current query */}
+
+            <div>
+              <h3 className="text-[25px] font-bold my-7 border-t pt-7">All Recommendations</h3>
+            </div>
+            <div>
+              {recommendations &&
+                recommendations.map(recommend => (
+                  <div className="flex items-center mb-6 gap-6 border rounded-xl py-6 px-7 justify-between" key={recommend.query_id}>
+                    <div className="w-3/4">
+                      <div className="flex items-center gap-6">
+                        <img
+                          className="w-12 h-12 border-yellow border-[3px] p-[2px] rounded-full"
+                          src={recommend.recommender_photo}
+                          alt=""
+                        />
+                        <div>
+                          <p>{recommend.recommender_name}</p>
+                          <p>Recommended on : {recommend.currnetDate}</p>
+                        </div>
+                      </div>
+                      <div>
+                        <p className="mt-5 font-bold text-[20px]">
+                          {recommend.recommendation_title} | {recommend.recommendation_name}
+                        </p>
+                        <p></p>
+                      </div>
+                      <p className="mt-5 leading-7">{recommend.recommendation_reason}</p>
+                    </div>
+                    <div className="w-1/4  rounded-xl overflow-hidden">
+                      <img className="w-full max-w-[200px]" src={recommend.recommendation_img} alt="" />
+                    </div>
+                  </div>
+                ))}
+            </div>
+
+            {/* Recommend FORM */}
             <div>
               <h2 className="text-[25px] font-bold my-7 border-t pt-7">Recommend Alternative</h2>
               <form onSubmit={handleRecommend} className="space-y-5">
