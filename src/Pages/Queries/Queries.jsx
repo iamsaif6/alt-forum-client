@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { IoGrid } from 'react-icons/io5';
 import { FaSquare } from 'react-icons/fa';
 import { BsFillGrid3X3GapFill } from 'react-icons/bs';
-import { CiGrid2H } from 'react-icons/ci';
 
 const Queries = () => {
   const [queries, setQueries] = useState(null);
@@ -55,12 +54,12 @@ const Queries = () => {
                     Posted On : <span className=" font-mono">{query.post_date}</span> |{' '}
                     <span className=" font-mono">{query.post_time}</span>
                   </p>
-                  <p className="pt-5">
-                    Total Recommened : <span className="font-semibold">{query.recommendationCount}</span>
-                  </p>
                 </div>
               </div>
-              <div className="flex mt-auto align-bottom items-center gap-5 py-4">
+              <p className="pt-5 mt-auto">
+                Total Recommened : <span className="font-semibold">{query.recommendationCount}</span>
+              </p>
+              <div className="flex  align-bottom items-center gap-5 py-4">
                 <h3>
                   Posted By : <span className="font-semibold">{query.user_name}</span>
                 </h3>
