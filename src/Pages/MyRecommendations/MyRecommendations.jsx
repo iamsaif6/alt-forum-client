@@ -14,7 +14,9 @@ const MyRecommendations = () => {
     });
   }, [user]);
 
-  const handleDeleteBtn = id => {
+  const handleDeleteBtn = (id, query_id) => {
+    console.log(id);
+
     Swal.fire({
       title: 'Are you sure?',
       text: "You won't be able to revert this!",
@@ -25,10 +27,22 @@ const MyRecommendations = () => {
       confirmButtonText: 'Yes, delete it!',
     }).then(result => {
       if (result.isConfirmed) {
-        Swal.fire({
-          title: 'Deleted!',
-          text: 'Your file has been deleted.',
-          icon: 'success',
+        //Delete Clicked Recommendation
+        axios.delete(`${import.meta.env.VITE_API_URL}/recommend/${id}`).then(res => {
+          if (res.data.deletedCount > 0) {
+            Swal.fire({
+              title: 'Deleted!',
+              text: 'Your Recommendation has been deleted.',
+              icon: 'success',
+            });
+            //Update UI
+            const newRecommend = myRecommendation.filter(rec => rec._id !== id);
+            setMyRecommendation(newRecommend);
+            //Decreament The Total Recommendation Count on Original Post
+            return axios.patch(`${import.meta.env.VITE_API_URL}/updaterecommend2/${query_id}`).then(res => {
+              console.log(res.data);
+            });
+          }
         });
       }
     });
@@ -75,7 +89,7 @@ const MyRecommendations = () => {
                       </td>
                       <td>{rec?.currnetDate}</td>
                       <th>
-                        <button onClick={() => handleDeleteBtn(rec.query_id)} className="btn btn-squire btn-sm btn-outline">
+                        <button onClick={() => handleDeleteBtn(rec._id, rec.query_id)} className="btn btn-squire btn-sm btn-outline">
                           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
                           </svg>

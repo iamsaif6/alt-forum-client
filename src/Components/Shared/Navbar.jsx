@@ -11,11 +11,9 @@ const notify = text => toast.success(text);
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-  console.log(user);
 
   // set theme on local storage
   const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light');
-  console.log(theme);
   const handleThemeBtn = e => {
     if (e.target.checked) {
       setTheme('dark');
@@ -28,7 +26,6 @@ const Navbar = () => {
     const localTheme = localStorage.getItem('theme');
     document.querySelector('html')?.setAttribute('data-theme', localTheme);
   }, [theme]);
-  console.log(theme);
 
   //Logout
   const handleLogout = () => {

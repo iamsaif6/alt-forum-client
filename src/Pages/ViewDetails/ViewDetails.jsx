@@ -16,7 +16,7 @@ const ViewDetails = () => {
     axios.get(`${import.meta.env.VITE_API_URL}/recommendation/${id}`).then(res => {
       setRecommendations(res.data);
     });
-  }, [id]);
+  }, []);
 
   //Load Quary Details By id
   useEffect(() => {
