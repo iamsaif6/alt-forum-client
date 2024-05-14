@@ -1,9 +1,14 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { IoGrid } from 'react-icons/io5';
+import { FaSquare } from 'react-icons/fa';
+import { BsFillGrid3X3GapFill } from 'react-icons/bs';
+import { CiGrid2H } from 'react-icons/ci';
 
 const Queries = () => {
   const [queries, setQueries] = useState(null);
+  const [grid, setGrid] = useState('grid-cols-3');
 
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_API_URL}/allqueries`).then(res => {
@@ -14,7 +19,22 @@ const Queries = () => {
 
   return (
     <div className="max-w-7xl px-4 mx-auto">
-      <div className="grid my-[70px] grid-cols-3 gap-7">
+      <div className="flex justify-end mt-[70px] items-center gap-7">
+        <h2>Change Layout</h2>
+        <div className="flex items-center gap-3">
+          <button onClick={() => setGrid('grid-cols-1')} className="btn">
+            <FaSquare />
+          </button>
+          <button onClick={() => setGrid('grid-cols-2')} className="btn">
+            <IoGrid />
+          </button>
+          <button onClick={() => setGrid('grid-cols-3')} className="btn lg:block hidden">
+            <BsFillGrid3X3GapFill />
+          </button>
+        </div>
+      </div>
+
+      <div className={`grid my-[70px] ${grid} gap-7`}>
         {queries &&
           queries.map(query => (
             <div className="border flex flex-col justify-between rounded-lg py-6 px-6" key={query._id}>
