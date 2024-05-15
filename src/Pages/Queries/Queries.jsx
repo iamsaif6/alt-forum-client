@@ -21,7 +21,7 @@ const Queries = () => {
   };
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/allqueries?search=${search}`).then(res => {
+    axios.get(`${import.meta.env.VITE_API_URL}/allqueries?search=${search}`, { withCredentials: true }).then(res => {
       setQueries(res.data);
     });
   }, [search]);

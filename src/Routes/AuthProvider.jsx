@@ -9,6 +9,7 @@ import {
 } from 'firebase/auth';
 import { createContext, useEffect, useState } from 'react';
 import auth from '../../firebase.config';
+import axios from 'axios';
 
 export const AuthContext = createContext(null);
 
@@ -39,7 +40,6 @@ const AuthProvider = ({ children }) => {
   };
 
   //Login with email and password
-
   const loginWithMail = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
@@ -53,8 +53,22 @@ const AuthProvider = ({ children }) => {
   // Observe Current User
   useEffect(() => {
     const unSubscribe = onAuthStateChanged(auth, currnetUser => {
+      const currnetEmail = currnetUser?.email || user?.email;
+      const loggedUser = currnetEmail;
       setUser(currnetUser);
       setLoading(false);
+      //If user exicts
+      if (currnetUser) {
+        //Get Access Toekn
+        axios.post(`${import.meta.env.VITE_API_URL}/jwt`, loggedUser, { withCredentials: true }).then(res => {
+          console.log(res.data);
+        });
+      } else {
+        axios.post(`${import.meta.env.VITE_API_URL}/logout`, loggedUser).then(res => {
+          console.log(res.data);
+        });
+      }
+
       //   console.log(currnetUser);
     });
 

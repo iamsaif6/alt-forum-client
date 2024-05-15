@@ -1,20 +1,33 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import loginIMG from '../../assets/login.png';
 import { FaEnvelope, FaEye, FaGoogle, FaFacebookF, FaGithub, FaEyeSlash } from 'react-icons/fa';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import AOS from 'aos';
 import toast from 'react-hot-toast';
 import 'aos/dist/aos.css';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Routes/AuthProvider';
+import axios from 'axios';
 
 AOS.init();
 const notify = text => toast.success(text);
 const notify2 = text => toast.error(text);
 
 const Login = () => {
+  const { user } = useContext(AuthContext);
   const [showPass, setShowPass] = useState(true);
   const { loginWithMail, loginWithGoogle } = useContext(AuthContext);
+  const location = useLocation();
+  const nagivate = useNavigate();
+
+  //Scroll To Top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  if (user) {
+    return <Navigate to="/"></Navigate>;
+  }
 
   //   Login with main
   const handleLogin = e => {
@@ -22,13 +35,15 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    console.log(email, password);
 
     //Sign in With Email
     loginWithMail(email, password)
       .then(() => {
         e.target.reset();
         notify('Login Successfull');
+        console.log(import.meta.env.VITE_API_URL);
+
+        nagivate(location?.state ? location?.state : '/');
       })
       .catch(error => {
         notify2(error.message);
@@ -41,6 +56,7 @@ const Login = () => {
     loginWithGoogle()
       .then(() => {
         notify('Login Successfull via Google');
+        nagivate(location?.state ? location?.state : '/');
       })
       .catch(error => {
         notify2(error.message);

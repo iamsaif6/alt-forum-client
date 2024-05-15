@@ -12,6 +12,11 @@ const ViewDetails = () => {
   const param = useParams();
   const id = param.id;
 
+  //Scroll To Top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   //Load Query Recommendation
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_API_URL}/recommendation/${id}`).then(res => {
