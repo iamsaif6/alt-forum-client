@@ -2,6 +2,8 @@
 
 Alt-Forum is a dynamic online community and resource center dedicated to helping individuals find alternative products and solutions for their everyday needs. Whether you're looking for eco-friendly alternatives, budget-friendly options, or simply something different from the mainstream choices, Alt-Forum is the place to discover and discuss.
 
+## Assignment_ID: assignment_category_0009
+
 ## Features:
 
 - **Add your own query**
