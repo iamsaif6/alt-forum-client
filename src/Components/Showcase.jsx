@@ -12,10 +12,10 @@ import { Link } from 'react-router-dom';
 
 const Showcase = () => {
   return (
-    <div className="grid py-[30px] grid-cols-6 gap-12 items-center">
-      <div className="col-span-4">
-        <div className="max-w-[700px]">
-          <h3 data-aos="fade-up" data-aos-duration="400" className="text-[30px] mb-3  font-bold">
+    <div className="grid py-[30px] md:mb-6 mb-[10px] grid-cols-1 md:grid-cols-6 gap-12 items-center">
+      <div className="lg:col-span-4 md:order-1 order-2 md:col-span-3">
+        <div className="max-w-[700px] text-center md:text-left">
+          <h3 data-aos="fade-up" data-aos-duration="400" className="md:text-[30px] text-[25px] mb-3  font-bold">
             Explore Our Eco-Friendly <br /> Alternatives Showcase
           </h3>
           <p>
@@ -30,7 +30,7 @@ const Showcase = () => {
           </Link>
         </div>
       </div>
-      <div className="col-span-2 showcase">
+      <div className="lg:col-span-2 md:order-2 order-1 md:col-span-3 showcase">
         <Swiper effect={'cards'} grabCursor={true} modules={[EffectCards]} className="mySwiper">
           <SwiperSlide>
             <img className="w-full h-full object-cover" src="https://i.ibb.co/59qJCh3/14331.jpg" alt="" />

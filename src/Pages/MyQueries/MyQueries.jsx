@@ -52,8 +52,8 @@ const MyQueries = () => {
       </Helmet>
       <div className="h-[350px] bg-cover flex flex-col items-center justify-center bg-no-repeat bg-top bg-[url('https://i.ibb.co/zPVSHRW/vecteezy-portrait-of-an-excited-beautiful-girl-wearing-dress-and-16264237-copy.jpg')]">
         <div className="text-center h-full px-4  flex flex-col justify-center w-full">
-          <h1 className="text-[40px] font-extrabold">Submit Your Query</h1>
-          <p className="max-w-[600px] mt-1 mb-6 text-center mx-auto">
+          <h1 className="md:text-[40px] text-[30px] font-extrabold">Submit Your Query</h1>
+          <p className="max-w-[600px] text-[12px] md:text-[16px] mt-1 mb-6 text-center mx-auto">
             Have a product in mind, but seeking better alternatives? Heres where you can voice your query! Fill out the form with details
             about the product, your inquiry, and any specific reasons for seeking alternatives.{' '}
           </p>
@@ -64,11 +64,11 @@ const MyQueries = () => {
       </div>
 
       <div className="max-w-7xl px-4 mx-auto my-16">
-        <h1 className="text-[40px] mb-9 font-extrabold text-center">My Qreries</h1>
+        <h1 className="md:text-[35px] text-[25px] mb-9 font-extrabold text-center">My Qreries</h1>
         {queries && queries.length < 1 ? (
           <div className="flex items-center flex-col justify-center">
             <Lottie className="max-w-[200px]" animationData={noQuery} loop={true} />
-            <h1 className="text-[30px] font-bold mt-5  text-center">No Query Found</h1>
+            <h1 className="md:text-[30px] text-[20px] font-bold mt-5  text-center">No Query Found</h1>
             <Link to="/addqueries">
               <button className="bg-[#000] text-white mt-5 rounded font-semibold py-3 px-8">Add Query Now</button>
             </Link>

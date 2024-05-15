@@ -38,7 +38,7 @@ const Queries = () => {
               <input
                 name="search"
                 type="text"
-                className=" w-[350px] transition-all  border py-3 px-5 rounded-lg outline-none"
+                className="w-full md:w-[350px] transition-all  border py-3 px-5 rounded-lg outline-none"
                 placeholder="Search by Product Name"
               />
             </label>
@@ -46,7 +46,7 @@ const Queries = () => {
           </div>
         </form>
       </div>
-      <div className="flex justify-end mt-[40px] items-center gap-7">
+      <div className=" hidden md:flex justify-end mt-[40px] items-center gap-7">
         <h2>Change Layout</h2>
         <div className="flex items-center gap-3">
           <button onClick={() => setGrid('grid-cols-1')} className="btn">
@@ -61,15 +61,10 @@ const Queries = () => {
         </div>
       </div>
 
-      <div className={`grid my-[70px] ${grid} gap-7`}>
+      <div className={`grid my-[70px] grid-cols-1 md:${grid} lg:${grid} gap-7`}>
         {queries &&
           queries.map(query => (
-            <div
-              data-aos="fade-up"
-              data-aos-duration="400"
-              className="border flex flex-col justify-between rounded-lg py-6 px-6"
-              key={query._id}
-            >
+            <div className="border flex flex-col justify-between rounded-lg py-6 px-6" key={query._id}>
               <img className="object-cover rounded-lg w-full h-[200px]" src={query.productIMG} alt={query.productName} />
               <div>
                 <h3 className="mt-6 mb-3 text-[20px] font-semibold">{query.queryTitle}</h3>

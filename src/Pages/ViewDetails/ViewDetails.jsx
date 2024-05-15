@@ -78,14 +78,14 @@ const ViewDetails = () => {
   };
 
   return (
-    <div className="max-w-7xl mb-[150px] my-[70px] mx-auto px-4">
+    <div className="max-w-7xl mb-[100px] md:mb-[150px] my-[40px] md:my-[70px] mx-auto px-4">
       <Helmet>
         <title>{details?.productName}</title>
       </Helmet>
       {details && (
         <div>
           <div className="max-w-[800px] mx-auto">
-            <h2 data-aos="fade-up" data-aos-duration="600" className="text-[40px] mb-10 border-b pb-6 font-semibold ">
+            <h2 data-aos="fade-up" data-aos-duration="600" className="md:text-[40px] text-[26px] mb-10 border-b pb-6 font-semibold ">
               {details.queryTitle}
             </h2>
             <div className="flex items-center flex-wrap justify-between">
@@ -111,11 +111,11 @@ const ViewDetails = () => {
             </p>
             <img className="mt-12 mb-10 mx-auto max-h-[400px] object-cover w-full" src={details.productIMG} alt="" />
             <div className="space-y-3">
-              <div className="flex justify-between items-center">
+              <div className="flex flex-wrap justify-between items-center">
                 <p className="font-semibold">
                   Product Name : <span>{details.productName}</span>
                 </p>
-                <p className="text-[18px]">
+                <p className="text-[18px] mt-3 md:mt-0">
                   Total Recommendation : <span className="font-bold">{reCount}</span>
                 </p>
               </div>
@@ -124,7 +124,6 @@ const ViewDetails = () => {
               </p>
             </div>
             {/*Load all recommendation for current query */}
-
             <div>
               <h3 className="text-[25px] font-bold my-7 border-t pt-7">All Recommendations</h3>
             </div>
@@ -134,13 +133,13 @@ const ViewDetails = () => {
                   <div
                     data-aos="fade-up"
                     data-aos-duration="700"
-                    className="flex items-center mb-6 gap-6 bg-[#eeeeee81] rounded-xl py-6 px-7 justify-between"
+                    className="flex flex-col md:flex-row items-center mb-6 gap-6 bg-[#eeeeee81] rounded-xl py-6 px-7 justify-between"
                     key={recommend.query_id}
                   >
-                    <div className="w-3/4">
+                    <div className="w-full md:w-3/4">
                       <div className="flex items-center gap-6">
                         <img
-                          className="w-12 h-12 object-cover border-yellow border-[3px] p-[2px] rounded-full"
+                          className="w-12  h-12 object-cover border-yellow  border-[3px] p-[2px] rounded-full"
                           src={recommend.recommender_photo}
                           alt=""
                         />
@@ -157,8 +156,8 @@ const ViewDetails = () => {
                       </div>
                       <p className="mt-5 leading-7">{recommend.recommendation_reason}</p>
                     </div>
-                    <div className="w-1/4  rounded-xl overflow-hidden">
-                      <img className="w-full max-w-[200px]" src={recommend.recommendation_img} alt="" />
+                    <div className="md:w-1/4 w-full  rounded-xl overflow-hidden">
+                      <img className="w-full mx-auto max-w-[300px]" src={recommend.recommendation_img} alt="" />
                     </div>
                   </div>
                 ))}
@@ -168,7 +167,7 @@ const ViewDetails = () => {
             <div>
               <h2 className="text-[25px] font-bold my-7 border-t pt-7">Recommend Alternative</h2>
               <form onSubmit={handleRecommend} className="space-y-5">
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <label className="text-[14px] font-semibold opacity-60 block" htmlFor="recommendation_title">
                     Title
                     <input
@@ -216,7 +215,7 @@ const ViewDetails = () => {
                   />
                 </label>
                 <button
-                  className=" hover:bg-[#222] hover:text-white mb-3 lg:mb-0 transition-all bg-yellow text-dark py-3 font-semibold px-11 rounded-md"
+                  className=" hover:bg-[#222] hover:text-white btn-block mb-3 lg:mb-0 transition-all bg-yellow text-dark py-3 font-semibold px-11 rounded-md"
                   type="submit"
                 >
                   Add Recommendation

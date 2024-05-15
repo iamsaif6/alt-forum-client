@@ -27,9 +27,9 @@ const Home = () => {
         <Helmet>
           <title>Home | Alt-Forum</title>
         </Helmet>
-        <h2 className="text-[30px] mb-9 text-center font-bold">Explore Product Alternatives</h2>
-        <div className="h-[300px] px-12 py-7 rounded-xl bg-[url('https://i.ibb.co/hCs8Z6M/model1-copy.jpg')] bg-no-repeat bg-cover bg-top">
-          <div className="max-w-[600px] flex  justify-center flex-col h-full">
+        <h2 className="md:text-[30px] text-[25px] mb-9 text-center font-bold">Explore Product Alternatives</h2>
+        <div className="px-12 py-7 rounded-xl bg-[url('https://i.ibb.co/hCs8Z6M/model1-copy.jpg')] bg-no-repeat bg-cover bg-top">
+          <div className="max-w-[600px] py-12 flex justify-center flex-col h-full">
             <p data-aos="fade-up" data-aos-duration="600" className="text-white text-[15px]">
               Discover a vast array of product queries and recommendations tailored to help you find the perfect alternatives. Whether you
               are looking for better quality, lower prices, or unique features, our community-driven platform provides insights and
@@ -44,14 +44,14 @@ const Home = () => {
         </div>
       </div>
       <div className=" max-w-7xl mx-auto px-4">
-        <h2 data-aos="fade-up" data-aos-duration="400" className="text-[30px] mb-3 text-center font-bold">
+        <h2 data-aos="fade-up" data-aos-duration="400" className="md:text-[30px] text-[25px] mb-3 text-center font-bold">
           Recent Queries
         </h2>
         <p data-aos="fade-up" data-aos-duration="600" className="max-w-[650px] mx-auto text-center">
           Stay up-to-date with the latest product queries and find the best alternatives quickly. See what other users are asking about and
           discover new recommendations and insights.
         </p>
-        <div className={`grid my-[70px] grid-cols-3 gap-7`}>
+        <div className={`grid my-[70px] grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7`}>
           {recentQuery &&
             recentQuery.map(query => (
               <div

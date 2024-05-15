@@ -8,13 +8,13 @@ const Footer = () => {
       <form className="absolute px-4 w-full -translate-y-1/2 top-0 left-1/2 -translate-x-1/2">
         <div className="relative w-full max-w-[500px] mx-auto">
           <input
-            className="py-5 focus:outline-none w-full px-8 rounded-full border-yellow border"
+            className="md:py-5 py-3 focus:outline-none w-full px-8 rounded-full border-yellow border"
             placeholder="Enter Email Address"
             type="email"
           />
           <button
             type="submit"
-            className=" hover:bg-[#222] hover:text-white mb-3 lg:mb-0 transition-all bg-yellow text-dark py-3 font-semibold  px-11 absolute right-3 top-1/2 -translate-y-1/2  rounded-3xl"
+            className=" hover:bg-[#222] hover:text-white mb-3 lg:mb-0 transition-all bg-yellow text-dark py-2 md:py-3 font-semibold px-5  md:px-11 absolute right-3 top-1/2 -translate-y-1/2  rounded-3xl"
           >
             Subscribe
           </button>
