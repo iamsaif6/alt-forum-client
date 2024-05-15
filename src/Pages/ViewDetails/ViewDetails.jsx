@@ -71,7 +71,7 @@ const ViewDetails = () => {
           text: 'Recommendation Added!',
           icon: 'success',
         });
-        // form.reset();
+        form.reset();
       }
     });
   };
@@ -88,7 +88,7 @@ const ViewDetails = () => {
                   Posted By : <span className="font-bold"> {details.user_name}</span>
                 </p>
                 <p>|</p>
-                <img className="w-9 h-9 rounded-full" src={details.user_photo} alt="" />
+                <img className="w-9 h-9 object-cover rounded-full" src={details.user_photo} alt="" />
               </div>
               <div>
                 <p className=" mb-4">
@@ -132,7 +132,7 @@ const ViewDetails = () => {
                     <div className="w-3/4">
                       <div className="flex items-center gap-6">
                         <img
-                          className="w-12 h-12 border-yellow border-[3px] p-[2px] rounded-full"
+                          className="w-12 h-12 object-cover border-yellow border-[3px] p-[2px] rounded-full"
                           src={recommend.recommender_photo}
                           alt=""
                         />

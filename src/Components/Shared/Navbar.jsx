@@ -44,15 +44,19 @@ const Navbar = () => {
       <li>
         <NavLink to="/queries">Queries</NavLink>
       </li>
-      <li>
-        <NavLink to="/recommendations">Recommendations For Me</NavLink>
-      </li>
-      <li>
-        <NavLink to="/myqueries">My Queries</NavLink>
-      </li>
-      <li>
-        <NavLink to="/myrecommendations">My Recommendations</NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/recommendations">Recommendations For Me</NavLink>
+          </li>
+          <li>
+            <NavLink to="/myqueries">My Queries</NavLink>
+          </li>
+          <li>
+            <NavLink to="/myrecommendations">My Recommendations</NavLink>
+          </li>
+        </>
+      )}
       {user ? (
         <li>
           <button onClick={handleLogout}>Logout</button>

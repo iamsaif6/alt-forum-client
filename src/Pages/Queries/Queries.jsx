@@ -32,7 +32,7 @@ const Queries = () => {
                 name="search"
                 type="text"
                 className=" w-[350px] transition-all  border py-3 px-5 rounded-lg outline-none"
-                placeholder="Search"
+                placeholder="Search by Product Name"
               />
             </label>
             <button className="bg-yellow font-medium text-[14px] py-2 px-4 rounded-lg">Search</button>
@@ -84,7 +84,7 @@ const Queries = () => {
                 <h3>
                   Posted By : <span className="font-semibold">{query.user_name}</span>
                 </h3>
-                <img className=" w-10 h-10 rounded-full" src={query.user_photo} alt="" />
+                <img className=" w-10 h-10 object-cover rounded-full" src={query.user_photo} alt="" />
               </div>
               <div>
                 <Link to={`/myqueries/${query._id}`}>
