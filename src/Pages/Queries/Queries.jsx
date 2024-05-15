@@ -8,17 +8,38 @@ import { BsFillGrid3X3GapFill } from 'react-icons/bs';
 const Queries = () => {
   const [queries, setQueries] = useState(null);
   const [grid, setGrid] = useState('grid-cols-3');
+  const [search, setSearch] = useState('');
+
+  const handleSearch = e => {
+    e.preventDefault();
+    const text = e.target.search.value;
+    setSearch(text);
+  };
 
   useEffect(() => {
-    axios.get(`${import.meta.env.VITE_API_URL}/allqueries`).then(res => {
-      console.log(res.data);
+    axios.get(`${import.meta.env.VITE_API_URL}/allqueries?search=${search}`).then(res => {
       setQueries(res.data);
     });
-  }, []);
+  }, [search]);
 
   return (
     <div className="max-w-7xl px-4 mx-auto">
-      <div className="flex justify-end mt-[70px] items-center gap-7">
+      <div className="mt-14  max-w-[500px] mx-auto">
+        <form onSubmit={handleSearch}>
+          <div className="flex gap-1 justify-center">
+            <label className=" ">
+              <input
+                name="search"
+                type="text"
+                className=" w-[350px] transition-all  border py-3 px-5 rounded-lg outline-none"
+                placeholder="Search"
+              />
+            </label>
+            <button className="bg-yellow font-medium text-[14px] py-2 px-4 rounded-lg">Search</button>
+          </div>
+        </form>
+      </div>
+      <div className="flex justify-end mt-[40px] items-center gap-7">
         <h2>Change Layout</h2>
         <div className="flex items-center gap-3">
           <button onClick={() => setGrid('grid-cols-1')} className="btn">

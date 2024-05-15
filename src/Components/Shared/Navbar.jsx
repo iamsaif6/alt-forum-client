@@ -68,7 +68,7 @@ const Navbar = () => {
   return (
     <div>
       <Tooltip className="relative z-40" id="my-tooltip" />
-      <div className="max-w-7xl relative z-10  mx-auto px-4 py-2 border-b">
+      <div className="max-w-7xl relative z-10  mx-auto px-4 py-2 ">
         <div className="navbar">
           <div className="navbar-start w-full md:w-1/2">
             <div className="dropdown">
