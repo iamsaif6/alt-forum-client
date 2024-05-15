@@ -42,7 +42,7 @@ const Queries = () => {
                 placeholder="Search by Product Name"
               />
             </label>
-            <button className="bg-yellow font-medium text-[14px] py-2 px-4 rounded-lg">Search</button>
+            <button className="bg-yellow hover:bg-[#333] hover:text-white font-medium text-[14px] py-2 px-4 rounded-lg">Search</button>
           </div>
         </form>
       </div>
@@ -95,7 +95,9 @@ const Queries = () => {
               </div>
               <div>
                 <Link to={`/myqueries/${query._id}`}>
-                  <button className="bg-yellow w-full mt-3 font-semibold py-2 px-2 rounded-md">Recommend</button>
+                  <button className="bg-yellow w-full hover:bg-[#333] hover:text-white mt-3 font-semibold py-2 px-2 rounded-md">
+                    Recommend
+                  </button>
                 </Link>
               </div>
             </div>

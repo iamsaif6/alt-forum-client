@@ -55,8 +55,8 @@ const AddQueries = () => {
       <Helmet>
         <title>Add Recommendation</title>
       </Helmet>
-      <div className="grid grid-cols-2 py-[80px] items-center gap-10">
-        <div>
+      <div className="grid grid-cols-1 md:grid-cols-2 py-[80px] items-center gap-10">
+        <div className="hidden md:block">
           <img className="w-full max-w-[500px]" src={banner1} alt="" />
         </div>
         <div>

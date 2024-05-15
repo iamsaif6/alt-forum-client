@@ -1,8 +1,31 @@
-# React + Vite
+# Alt-Forum - Explore the World with Ease
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Alt-Forum is a dynamic online community and resource center dedicated to helping individuals find alternative products and solutions for their everyday needs. Whether you're looking for eco-friendly alternatives, budget-friendly options, or simply something different from the mainstream choices, Alt-Forum is the place to discover and discuss.
 
-Currently, two official plugins are available:
+## Features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Add your own query**
+- **Commnet On others query**
+- **Deleted or modify your query**
+- **Deleted your comment**
+- **Live comment update or comment count**
+- **email and password and google login**
+
+## Live Link:
+
+[Visit Alt-Forum](https://alt-forum.web.app/)
+
+## NPM Packages Used:
+
+- **express**
+- **MongoDB**
+- **Tailwind**
+- **DaisyUI**
+- **react-router-dom**
+- **Swiper JS**
+- **Lottie**
+- **Cors**
+- **swiper**
+- **sweetalert2**
+- **aos**
+- **react helmet**

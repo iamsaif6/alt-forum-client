@@ -36,7 +36,11 @@ const Home = () => {
               suggestions from real users.
             </p>
             <Link to="/queries">
-              <button data-aos="fade-up" data-aos-duration="700" className="py-3 px-7 bg-yellow self-start font-bold rounded-lg mt-5">
+              <button
+                data-aos="fade-up"
+                data-aos-duration="700"
+                className="py-3 hover:bg-[#333] hover:text-white px-7 bg-yellow self-start font-bold rounded-lg mt-5"
+              >
                 Explore All Queries
               </button>
             </Link>
@@ -90,7 +94,9 @@ const Home = () => {
                 </div>
                 <div>
                   <Link to={`/myqueries/${query._id}`}>
-                    <button className="bg-yellow w-full mt-3 font-semibold py-2 px-2 rounded-md">Recommend</button>
+                    <button className="bg-yellow hover:bg-[#333] hover:text-white w-full mt-3 font-semibold py-2 px-2 rounded-md">
+                      Recommend
+                    </button>
                   </Link>
                 </div>
               </div>

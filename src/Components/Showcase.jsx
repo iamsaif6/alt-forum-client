@@ -24,7 +24,11 @@ const Showcase = () => {
             reducing their environmental footprint.
           </p>
           <Link to="/queries">
-            <button data-aos="fade-up" data-aos-duration="700" className="py-3 px-7 bg-yellow self-start font-bold rounded-lg mt-5">
+            <button
+              data-aos="fade-up"
+              data-aos-duration="700"
+              className="py-3 px-7 bg-yellow hover:bg-[#333] hover:text-white self-start font-bold rounded-lg mt-5"
+            >
               Explore All Queries
             </button>
           </Link>
