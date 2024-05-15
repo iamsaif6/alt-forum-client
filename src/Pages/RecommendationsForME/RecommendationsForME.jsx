@@ -37,7 +37,7 @@ const RecommendationsForME = () => {
                   {/* row 3 */}
                   {recommendForMe &&
                     recommendForMe.map(rec => (
-                      <tr key={rec?.query_id}>
+                      <tr data-aos="fade-up" data-aos-duration="700" key={rec?.query_id}>
                         <td>
                           <span className="font-bold">{rec?.query_title}</span>
                           <br />

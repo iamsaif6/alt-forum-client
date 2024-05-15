@@ -34,6 +34,7 @@ export default function Slider() {
           pagination={{
             clickable: true,
           }}
+          loop:true
           navigation={true}
           modules={[Autoplay, Pagination, Navigation]}
           onAutoplayTimeLeft={onAutoplayTimeLeft}
@@ -43,7 +44,11 @@ export default function Slider() {
             <div className="bg-[url('https://i.ibb.co/4jCftWT/vecteezy-portrait-of-an-excited-young-blonde-girl-pointing-with-hand-3823499-copy.jpg')] flex items-center h-[600px] w-full bg-cover bg-top">
               <div className="w-4/5 mx-auto  my-7 ">
                 <div className="text-center  max-w-[700px] lg:text-left">
-                  <h1 className="lg:text-[65px] text-white text-[35px] lg:leading-[80px] font-extrabold">
+                  <h1
+                    data-aos="fade-up"
+                    data-aos-duration="600"
+                    className="lg:text-[65px] text-white text-[35px] lg:leading-[80px] font-extrabold"
+                  >
                     Innovation Discover Better Options
                   </h1>
 

@@ -81,7 +81,9 @@ const ViewDetails = () => {
       {details && (
         <div>
           <div className="max-w-[800px] mx-auto">
-            <h2 className="text-[40px] mb-10 border-b pb-6 font-semibold ">{details.queryTitle}</h2>
+            <h2 data-aos="fade-up" data-aos-duration="600" className="text-[40px] mb-10 border-b pb-6 font-semibold ">
+              {details.queryTitle}
+            </h2>
             <div className="flex items-center flex-wrap justify-between">
               <div className="flex items-center mb-6 gap-6">
                 <p>
@@ -99,7 +101,7 @@ const ViewDetails = () => {
                 </p>
               </div>
             </div>
-            <p className="leading-8">
+            <p data-aos="fade-up" data-aos-duration="700" className="leading-8">
               <span className="font-bold"> Alternation Reason : </span>
               {details.reason}
             </p>
@@ -126,6 +128,8 @@ const ViewDetails = () => {
               {recommendations &&
                 recommendations.map(recommend => (
                   <div
+                    data-aos="fade-up"
+                    data-aos-duration="700"
                     className="flex items-center mb-6 gap-6 bg-[#eeeeee81] rounded-xl py-6 px-7 justify-between"
                     key={recommend.query_id}
                   >

@@ -68,7 +68,7 @@ const MyRecommendations = () => {
                 {/* row 3 */}
                 {myRecommendation &&
                   myRecommendation.map(rec => (
-                    <tr key={rec?.query_id}>
+                    <tr data-aos="fade-up" data-aos-duration="400" key={rec?.query_id}>
                       <td>
                         <div className="flex items-center gap-3">
                           <div className="avatar">

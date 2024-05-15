@@ -75,7 +75,12 @@ const MyQueries = () => {
         <div className="grid grid-cols-3 gap-7">
           {queries &&
             queries.map(query => (
-              <div className="border flex flex-col justify-between rounded-lg py-6 px-6" key={query._id}>
+              <div
+                data-aos="fade-up"
+                data-aos-duration="600"
+                className="border flex flex-col justify-between rounded-lg py-6 px-6"
+                key={query._id}
+              >
                 <img className="object-cover rounded-lg w-full h-[200px]" src={query.productIMG} alt={query.productName} />
                 <div>
                   <h3 className="mt-6 mb-3 text-[20px] font-semibold">{query.queryTitle}</h3>

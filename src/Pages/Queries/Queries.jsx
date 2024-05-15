@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 import { IoGrid } from 'react-icons/io5';
 import { FaSquare } from 'react-icons/fa';
 import { BsFillGrid3X3GapFill } from 'react-icons/bs';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Queries = () => {
+  AOS.init();
   const [queries, setQueries] = useState(null);
   const [grid, setGrid] = useState('grid-cols-3');
   const [search, setSearch] = useState('');
@@ -57,7 +60,12 @@ const Queries = () => {
       <div className={`grid my-[70px] ${grid} gap-7`}>
         {queries &&
           queries.map(query => (
-            <div className="border flex flex-col justify-between rounded-lg py-6 px-6" key={query._id}>
+            <div
+              data-aos="fade-up"
+              data-aos-duration="400"
+              className="border flex flex-col justify-between rounded-lg py-6 px-6"
+              key={query._id}
+            >
               <img className="object-cover rounded-lg w-full h-[200px]" src={query.productIMG} alt={query.productName} />
               <div>
                 <h3 className="mt-6 mb-3 text-[20px] font-semibold">{query.queryTitle}</h3>
