@@ -7,3 +7,14 @@
 body {
   font-family: 'Raleway', sans-serif;
 }
+
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: #f4b700;
+  transform-origin: 0%;
+  z-index: 9999;
+}

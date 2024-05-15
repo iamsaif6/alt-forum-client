@@ -7,8 +7,10 @@ import 'aos/dist/aos.css';
 import Showcase from '../../Components/Showcase';
 import NewsLetter from '../../Components/NewsLetter';
 import { Helmet } from 'react-helmet';
+import { motion, useScroll } from 'framer-motion';
 
 const Home = () => {
+  const { scrollYProgress } = useScroll();
   const [recentQuery, setRecentQuery] = useState();
   AOS.init();
 
@@ -22,6 +24,7 @@ const Home = () => {
 
   return (
     <>
+      <motion.div className="progress-bar" style={{ scaleX: scrollYProgress }} />
       <Slider></Slider>
       <div className="my-[90px] max-w-7xl mx-auto px-4">
         <Helmet>
