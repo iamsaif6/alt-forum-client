@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { AuthContext } from '../../Routes/AuthProvider';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const ViewDetails = () => {
   const { user } = useContext(AuthContext);
@@ -78,6 +79,9 @@ const ViewDetails = () => {
 
   return (
     <div className="max-w-7xl mb-[150px] my-[70px] mx-auto px-4">
+      <Helmet>
+        <title>{details?.productName}</title>
+      </Helmet>
       {details && (
         <div>
           <div className="max-w-[800px] mx-auto">

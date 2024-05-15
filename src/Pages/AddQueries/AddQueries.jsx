@@ -3,6 +3,7 @@ import { AuthContext } from '../../Routes/AuthProvider';
 import banner1 from '../../assets/banner1.png';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const AddQueries = () => {
   const { user } = useContext(AuthContext);
@@ -51,6 +52,9 @@ const AddQueries = () => {
 
   return (
     <div className="max-w-7xl px-4 mx-auto">
+      <Helmet>
+        <title>Add Recommendation</title>
+      </Helmet>
       <div className="grid grid-cols-2 py-[80px] items-center gap-10">
         <div>
           <img className="w-full max-w-[500px]" src={banner1} alt="" />

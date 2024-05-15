@@ -5,6 +5,7 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import Lottie from 'lottie-react';
 import noQuery from '../../assets/noQuery.json';
+import { Helmet } from 'react-helmet';
 
 const MyQueries = () => {
   const { user } = useContext(AuthContext);
@@ -46,6 +47,9 @@ const MyQueries = () => {
 
   return (
     <div className="mb-[120px]">
+      <Helmet>
+        <title>My Queries</title>
+      </Helmet>
       <div className="h-[350px] bg-cover flex flex-col items-center justify-center bg-no-repeat bg-top bg-[url('https://i.ibb.co/zPVSHRW/vecteezy-portrait-of-an-excited-beautiful-girl-wearing-dress-and-16264237-copy.jpg')]">
         <div className="text-center h-full px-4  flex flex-col justify-center w-full">
           <h1 className="text-[40px] font-extrabold">Submit Your Query</h1>

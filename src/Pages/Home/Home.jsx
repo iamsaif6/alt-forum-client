@@ -6,6 +6,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import Showcase from '../../Components/Showcase';
 import NewsLetter from '../../Components/NewsLetter';
+import { Helmet } from 'react-helmet';
 
 const Home = () => {
   const [recentQuery, setRecentQuery] = useState();
@@ -23,6 +24,9 @@ const Home = () => {
     <>
       <Slider></Slider>
       <div className="my-[90px] max-w-7xl mx-auto px-4">
+        <Helmet>
+          <title>Home | Alt-Forum</title>
+        </Helmet>
         <h2 className="text-[30px] mb-9 text-center font-bold">Explore Product Alternatives</h2>
         <div className="h-[300px] px-12 py-7 rounded-xl bg-[url('https://i.ibb.co/hCs8Z6M/model1-copy.jpg')] bg-no-repeat bg-cover bg-top">
           <div className="max-w-[600px] flex  justify-center flex-col h-full">

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
@@ -53,6 +54,9 @@ const Update = () => {
 
   return (
     <div className="max-w-7xl px-4 mx-auto">
+      <Helmet>
+        <title>Update | {post?.productName}</title>
+      </Helmet>
       {post && (
         <div className="grid grid-cols-5 py-[80px] items-center gap-10">
           <div className="col-span-2 align-baseline">

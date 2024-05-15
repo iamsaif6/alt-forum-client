@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Routes/AuthProvider';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet';
 
 const MyRecommendations = () => {
   const { user } = useContext(AuthContext);
@@ -50,6 +51,9 @@ const MyRecommendations = () => {
 
   return (
     <div className="max-w-7xl px-4 mx-auto py-[80px]">
+      <Helmet>
+        <title>My Recommendation</title>
+      </Helmet>
       <div>
         <h1 className="text-[30px] text-center font-bold mb-12">Recommendation Made By Me</h1>
         <div>

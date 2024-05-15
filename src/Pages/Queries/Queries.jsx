@@ -6,6 +6,7 @@ import { FaSquare } from 'react-icons/fa';
 import { BsFillGrid3X3GapFill } from 'react-icons/bs';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { Helmet } from 'react-helmet';
 
 const Queries = () => {
   AOS.init();
@@ -27,6 +28,9 @@ const Queries = () => {
 
   return (
     <div className="max-w-7xl px-4 mx-auto">
+      <Helmet>
+        <title>Queries</title>
+      </Helmet>
       <div className="mt-14  max-w-[500px] mx-auto">
         <form onSubmit={handleSearch}>
           <div className="flex gap-1 justify-center">
