@@ -7,14 +7,18 @@ import { ThemeProvider } from '@material-tailwind/react';
 import { Toaster } from 'react-hot-toast';
 import AuthProvider from './Routes/AuthProvider';
 import axios from 'axios';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 axios.defaults.withCredentials = true;
+const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <ThemeProvider>
       <AuthProvider>
-        <RouterProvider router={router} />
+        <QueryClientProvider client={queryClient}>
+          <RouterProvider router={router} />
+        </QueryClientProvider>
       </AuthProvider>
       <Toaster position="top-right" />
     </ThemeProvider>

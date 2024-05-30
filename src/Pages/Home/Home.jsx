@@ -8,6 +8,7 @@ import Showcase from '../../Components/Showcase';
 import NewsLetter from '../../Components/NewsLetter';
 import { Helmet } from 'react-helmet';
 import { motion, useScroll } from 'framer-motion';
+import Loved from '../../Components/Shared/Loved';
 
 const Home = () => {
   const { scrollYProgress } = useScroll();
@@ -89,11 +90,14 @@ const Home = () => {
                 <p className="pt-5 mt-auto">
                   Total Recommened : <span className="font-semibold">{query.recommendationCount}</span>
                 </p>
-                <div className="flex  align-bottom items-center gap-5 py-4">
-                  <h3>
-                    Posted By : <span className="font-semibold">{query.user_name}</span>
-                  </h3>
-                  <img className=" w-10 h-10 object-cover rounded-full" src={query.user_photo} alt="" />
+                <div className="flex justify-between  align-bottom items-center gap-5 py-4">
+                  <div className="flex items-center gap-3">
+                    <h3>
+                      Posted By : <span className="font-semibold">{query.user_name}</span>
+                    </h3>
+                    <img className=" w-10 h-10 object-cover rounded-full" src={query.user_photo} alt="" />
+                  </div>
+                  <Loved id={query._id}></Loved>
                 </div>
                 <div>
                   <Link to={`/myqueries/${query._id}`}>

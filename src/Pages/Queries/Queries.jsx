@@ -7,6 +7,7 @@ import { BsFillGrid3X3GapFill } from 'react-icons/bs';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { Helmet } from 'react-helmet';
+import Loved from '../../Components/Shared/Loved';
 
 const Queries = () => {
   AOS.init();
@@ -87,11 +88,14 @@ const Queries = () => {
               <p className="pt-5 mt-auto">
                 Total Recommened : <span className="font-semibold">{query.recommendationCount}</span>
               </p>
-              <div className="flex  align-bottom items-center gap-5 py-4">
-                <h3>
-                  Posted By : <span className="font-semibold">{query.user_name}</span>
-                </h3>
-                <img className=" w-10 h-10 object-cover rounded-full" src={query.user_photo} alt="" />
+              <div className="flex justify-between align-bottom items-center gap-5 py-4">
+                <div className="flex items-center gap-2">
+                  <h3>
+                    Posted By : <span className="font-semibold">{query.user_name}</span>
+                  </h3>
+                  <img className=" w-10 h-10 object-cover rounded-full" src={query.user_photo} alt="" />
+                </div>
+                <Loved id={query._id}></Loved>
               </div>
               <div>
                 <Link to={`/myqueries/${query._id}`}>
